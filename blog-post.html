@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | The Jain Group</title>
+<meta name="description" content="Read the latest stories and insights from the Jain Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="author" content="The Jain Group">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://thejaingroup.com/blog.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Jain Group">
+<meta property="og:title" content="Blog | The Jain Group">
+<meta property="og:description" content="Read the latest stories and insights from the Jain Group.">
+<meta property="og:image" content="https://thejaingroup.com/images/Dream%20One%201.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="Jain Group Home"><img src="logo.png" alt="The Jain Group"></a>
+    <nav><ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="our-development.html">Our Development</a></li>
+      <li><a href="hospitality.html">Hospitality</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="referral.html">Referral</a></li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="video-gallery.html">Gallery</a></li>
+    <li><a href="awards.html">Awards</a></li></ul></nav>
+    <div class="nav-cta"><a href="contact.html" class="btn btn--solid btn--sm">Enquire</a><button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div>
+  </div>
+</header>
+<main id="main">
+<section class="section">
+  <div class="container">
+    <article class="post-wrap" id="postWrap">
+      <p class="blog-empty">Loading article…</p>
+    </article>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img class="f-logo" src="logo.png" alt="The Jain Group">
+        <p>A pioneer in Finance, Real Estate and Hospitality in West Bengal for decades, led by flagship company Dream Gateway Hotels Ltd.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/thejaingroup/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/jaingroupofficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/user/marketing2014/videos" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="our-story.html">Our Story</a></li><li><a href="our-development.html">Our Development</a></li><li><a href="blog.html">Blog</a></li><li><a href="awards.html">Awards</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Projects</h4><ul><li><a href="our-development.html">Dream World City</a></li><li><a href="our-development.html">Dream Gurukul</a></li><li><a href="our-development.html">Dream Valley</a></li><li><a href="our-development.html">Dream Eco City</a></li><li><a href="our-development.html">Dream Exotica</a></li><li><a href="our-development.html">Dream One</a></li></ul></div>
+      <div class="footer-col"><h4>Get in touch</h4><ul><li><a href="mailto:marketing@thejaingroup.com">marketing@thejaingroup.com</a></li><li><a href="tel:03340319999">+91 033 4031 9999</a></li><li><a href="tel:9163983355">+91 91639 83355</a></li><li>44/2A, Hazra Road, Kolkata 700 019</li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>(c) <span id="yr"></span> Jain Group. All Rights Reserved.</div><div><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="disclaimer.html">Disclaimer</a></div></div>
+  </div>
+</footer>
+<div class="fab-stack">
+  <a class="fab fab--call" href="tel:9163983355" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
+  <a class="fab fab--wa" href="https://wa.me/919163983355?text=Interested%20in%20Jain%20Group" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="blog-config.js"></script>
+<script src="blog-data.js"></script>
+<script>
+(function(){
+  var wrap=document.getElementById('postWrap');
+  var esc=function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  var inline=function(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');};
+  var strip=function(h){var d=document.createElement('div');d.innerHTML=h||'';return (d.textContent||'').trim();};
+  var fmt=function(iso){try{var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];var d=new Date(iso);return d.getDate()+' '+m[d.getMonth()]+', '+d.getFullYear();}catch(e){return iso;}};
+  var slug=new URLSearchParams(location.search).get('slug');
+
+  function bodyToHtml(body){
+    return String(body||'').split(/\n\s*\n/).map(function(b){
+      b=b.trim(); if(!b) return '';
+      if(b.indexOf('## ')===0) return '<h3>'+inline(b.slice(3))+'</h3>';
+      var lines=b.split(/\n/);
+      if(lines.every(function(l){return l.trim().indexOf('- ')===0||!l.trim();})){
+        return '<ul>'+lines.filter(function(l){return l.trim();}).map(function(l){return '<li>'+inline(l.trim().slice(2))+'</li>';}).join('')+'</ul>';
+      }
+      return '<p>'+inline(b)+'</p>';
+    }).join('');
+  }
+  function notFound(){
+    wrap.innerHTML='<div style="text-align:center;padding:30px 0;"><h2 class="post-title" style="margin-bottom:18px;">Article not found</h2><p style="color:var(--muted);margin-bottom:26px;">This post may have moved or been removed.</p><a href="blog.html" class="btn btn--solid">Back to Blog</a></div>';
+  }
+  function renderPost(p){
+    document.title=p.title+' | The Jain Group';
+    wrap.innerHTML=
+      '<div class="breadcrumb" style="margin:0 0 22px;color:var(--muted);"><a href="index.html">Home</a> / <a href="blog.html">Blog</a></div>'+
+      '<img class="post-cover" src="'+esc(p.image)+'" alt="'+esc(p.title)+'">'+
+      '<span class="post-tag">#'+esc(p.tag)+'</span>'+
+      '<h1 class="post-title">'+esc(p.title)+'</h1>'+
+      '<div class="post-meta">'+esc(p.date)+(p.author?'&nbsp;&nbsp;•&nbsp;&nbsp;'+esc(p.author):'')+'</div>'+
+      '<div class="post-body">'+p.contentHtml+'</div>'+
+      '<div class="post-back"><a href="blog.html" class="link-arrow"><i class="fa-solid fa-arrow-left"></i> Back to all articles</a></div>';
+  }
+  function renderLocal(){
+    var posts=(function(){try{var s=JSON.parse(localStorage.getItem('jg_blog_posts')||'null');if(s&&s.length)return s;}catch(e){}return window.BLOG_POSTS||[];})();
+    var p=posts.filter(function(x){return x.slug===slug;})[0];
+    if(!p){notFound();return;}
+    renderPost({title:p.title,tag:p.tag,date:p.date,author:p.author,image:p.image,contentHtml:bodyToHtml(p.body)});
+  }
+  var SHEET=(window.SHEET_API||'').trim();
+  var WP=(window.WP_SITE||'').trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'');
+  if(SHEET && slug){
+    fetch(SHEET+'?slug='+encodeURIComponent(slug))
+      .then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(list){
+        var p=(list&&list.length)?list[0]:null;
+        if(!p){renderLocal();return;}
+        renderPost({title:p.title,tag:p.tag,date:p.date,author:p.author,image:p.image,contentHtml:bodyToHtml(p.body)});
+      })
+      .catch(renderLocal);
+  } else if(WP && slug){
+    fetch('https://public-api.wordpress.com/wp/v2/sites/'+encodeURIComponent(WP)+'/posts?slug='+encodeURIComponent(slug)+'&_embed')
+      .then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(list){
+        if(!list||!list.length){renderLocal();return;}
+        var p=list[0];
+        var img=''; try{img=p._embedded['wp:featuredmedia'][0].source_url;}catch(e){}
+        if(!img) img='images/Dream%20One%201.jpg';
+        var tag='Blog'; try{var t=p._embedded['wp:term']; for(var i=0;i<t.length;i++){if(t[i]&&t[i].length){tag=t[i][0].name;break;}}}catch(e){}
+        var author='The Jain Group'; try{author=p._embedded.author[0].name||author;}catch(e){}
+        renderPost({title:strip(p.title.rendered),tag:tag,date:fmt(p.date),author:author,image:img,contentHtml:p.content.rendered});
+      })
+      .catch(renderLocal);
+  } else { renderLocal(); }
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>
