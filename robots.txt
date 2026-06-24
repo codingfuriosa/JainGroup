@@ -1,0 +1,18 @@
+# robots.txt — The Jain Group
+# Allow all reputable crawlers full access to public pages.
+
+User-agent: *
+Allow: /
+
+# Private / internal tools and source files — keep out of the index
+Disallow: /blog-editor.html
+Disallow: /google-apps-script.gs
+Disallow: /seed-posts.gs
+Disallow: /localize-images.ps1
+Disallow: /*.bat$
+
+# Block known low-value AI scrapers (optional — remove if undesired)
+# User-agent: GPTBot
+# Disallow: /
+
+Sitemap: https://thejaingroup.com/sitemap.xml
