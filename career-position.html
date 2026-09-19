@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Careers | The Jain Group</title>
+<meta name="description" content="Open positions at the Jain Group — apply directly online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* This page renders ONE position, whichever ?slug= names — there is no per-position file to
+     create or deploy; sharing a different slug is what makes it a "different page" for a
+     candidate, the same way test-take.html serves any test from one file via ?a=. */
+  .jd-block{margin:0 0 28px}
+  .jd-block h3{font-size:16px;margin:0 0 8px;color:var(--gold-deep,#8a6d3b)}
+  .jd-block ul{margin:0;padding-left:20px}
+  .jd-block li{margin-bottom:6px;color:var(--muted,#5a5a5a)}
+  .field-error{color:#b3261e;font-size:12px;margin-top:4px}
+  .invalid input,.invalid select{border-color:#b3261e}
+  .gone-msg{text-align:center;padding:60px 20px}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="Jain Group — Home"><img src="logo.png" alt="The Jain Group"></a>
+    <nav><ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="our-development.html">Our Development</a></li>
+      <li><a href="hospitality.html">Hospitality</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="referral.html">Referral</a></li>
+      <li><a href="career.html" class="active">Career</a></li>
+      <li><a href="video-gallery.html">Gallery</a></li>
+      <li><a href="awards.html">Awards</a></li></ul></nav>
+    <div class="nav-cta"><a href="contact.html" class="btn btn--solid btn--sm">Enquire</a><button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div>
+  </div>
+</header>
+<main id="main">
+<section class="page-intro">
+  <div class="container">
+    <span class="eyebrow">Careers</span>
+    <h1 id="posTitle">Loading…</h1>
+    <div class="divider"></div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="career.html">Career</a> &nbsp;/&nbsp; <span id="posCrumb"></span></div>
+  </div>
+</section>
+
+<section class="section" id="jdSection" style="display:none">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1fr;gap:6px;margin-bottom:24px" id="posMeta"></div>
+    <div class="jd-block"><h3>About the Role</h3><p id="posSummary" style="color:var(--muted,#5a5a5a)"></p></div>
+    <div class="jd-block" id="posRespBlock"><h3>Key Responsibilities</h3><ul id="posResp"></ul></div>
+    <div class="jd-block" id="posQualBlock"><h3>What We're Looking For</h3><ul id="posQual"></ul></div>
+  </div>
+</section>
+
+<section class="section section--paper2" id="applySection" style="display:none">
+  <div class="container" style="max-width:640px">
+    <div class="section-head" style="margin-bottom:24px"><span class="eyebrow">Apply Now</span><h2>Submit your application</h2></div>
+    <form id="applyForm" novalidate>
+      <div class="form-row">
+        <div class="field"><label for="fn">First Name *</label><input type="text" id="fn" required></div>
+        <div class="field"><label for="ln">Last Name *</label><input type="text" id="ln" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="em">Email *</label><input type="email" id="em" required></div>
+        <div class="field"><label for="ph">Phone *</label><input type="tel" id="ph" required></div>
+      </div>
+      <div class="field"><label for="src">How did you hear about this opening?</label>
+        <select id="src">
+          <option value="">Select an option</option>
+          <option>LinkedIn</option><option>Naukri</option><option>Indeed</option>
+          <option>Internshala</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="cv">Resume (PDF, DOC, DOCX, RTF or ODT, max 8MB) *</label><input type="file" id="cv" accept=".pdf,.doc,.docx,.rtf,.odt" required></div>
+      <input type="text" id="website" name="website" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <button type="submit" class="btn btn--solid" id="applyBtn" style="width:100%;justify-content:center">Submit Application</button>
+      <p id="applyMsg" style="margin-top:14px;text-align:center"></p>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="goneSection" style="display:none">
+  <div class="container gone-msg">
+    <h2>This position is no longer open</h2>
+    <p style="color:var(--muted,#5a5a5a)">It may have already been filled, or the listing has closed. Have a look at our other openings.</p>
+    <a href="career.html" class="btn btn--solid" style="margin-top:16px">View Careers</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom"><div>© <span id="yr"></span> Jain Group. All Rights Reserved.</div><div><a href="privacy-policy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer</a></div></div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+const FN_BASE = 'https://rkxsgtauigjrpcjkmccu.supabase.co/functions/v1/career-apply';
+const slug = new URLSearchParams(location.search).get('slug') || '';
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function showGone(){
+  document.getElementById('jdSection').style.display='none';
+  document.getElementById('applySection').style.display='none';
+  document.getElementById('goneSection').style.display='';
+  document.getElementById('posTitle').textContent='Position unavailable';
+}
+
+async function loadPosition(){
+  if(!slug){ showGone(); return; }
+  let data;
+  try{
+    const r = await fetch(FN_BASE, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'position', slug}) });
+    data = await r.json();
+    if(!r.ok || data.error || !data.position) { showGone(); return; }
+  }catch(_){ showGone(); return; }
+
+  const p = data.position;
+  document.getElementById('posTitle').textContent = p.job_title || 'Open Position';
+  document.getElementById('posCrumb').textContent = p.job_title || '';
+  document.title = (p.job_title||'Careers') + ' | The Jain Group';
+
+  const meta = [
+    p.department ? ('<div><i class="fa-solid fa-building" style="width:18px;color:var(--gold-deep,#8a6d3b)"></i> '+esc(p.department)+'</div>') : '',
+    p.location ? ('<div><i class="fa-solid fa-location-dot" style="width:18px;color:var(--gold-deep,#8a6d3b)"></i> '+esc(p.location)+'</div>') : '',
+    p.experience ? ('<div><i class="fa-solid fa-briefcase" style="width:18px;color:var(--gold-deep,#8a6d3b)"></i> '+esc(p.experience)+' experience</div>') : '',
+    p.vacancies ? ('<div><i class="fa-solid fa-users" style="width:18px;color:var(--gold-deep,#8a6d3b)"></i> '+esc(p.vacancies)+' opening(s)</div>') : ''
+  ].filter(Boolean).join('');
+  document.getElementById('posMeta').innerHTML = meta;
+  document.getElementById('posSummary').textContent = p.summary || '';
+
+  const respList = Array.isArray(p.responsibilities) ? p.responsibilities : [];
+  if(respList.length){
+    document.getElementById('posResp').innerHTML = respList.map(r=>'<li>'+esc((r&&(r.label?r.label+': ':'')+(r.detail||''))||r)+'</li>').join('');
+  } else { document.getElementById('posRespBlock').style.display='none'; }
+
+  const q = p.qualifications || {};
+  const qLines = [];
+  if(q.education) qLines.push('Education: '+q.education);
+  if(q.experience) qLines.push('Experience: '+q.experience);
+  if(Array.isArray(q.skills)&&q.skills.length) qLines.push('Skills: '+q.skills.join(', '));
+  if(Array.isArray(q.personal_attributes)&&q.personal_attributes.length) qLines.push('Attributes: '+q.personal_attributes.join(', '));
+  if(qLines.length){ document.getElementById('posQual').innerHTML = qLines.map(l=>'<li>'+esc(l)+'</li>').join(''); }
+  else { document.getElementById('posQualBlock').style.display='none'; }
+
+  document.getElementById('jdSection').style.display='';
+  document.getElementById('applySection').style.display='';
+}
+
+document.getElementById('applyForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('applyBtn');
+  const msg = document.getElementById('applyMsg');
+  msg.textContent=''; msg.style.color='';
+
+  const cvInput = document.getElementById('cv');
+  const file = cvInput.files[0];
+  if(!file){ msg.textContent='Please attach your resume.'; msg.style.color='#b3261e'; return; }
+
+  btn.disabled = true; btn.textContent = 'Uploading resume…';
+  try{
+    const fd = new FormData();
+    fd.append('slug', slug);
+    fd.append('cv', file);
+    const upRes = await fetch(FN_BASE, { method:'POST', body: fd });
+    const upData = await upRes.json();
+    if(!upRes.ok || upData.error){ throw new Error(upData.error || 'Could not upload your CV.'); }
+
+    btn.textContent = 'Submitting…';
+    const payload = {
+      action:'submit', slug,
+      first_name: document.getElementById('fn').value.trim(),
+      last_name: document.getElementById('ln').value.trim(),
+      email: document.getElementById('em').value.trim(),
+      phone: document.getElementById('ph').value.trim(),
+      source: document.getElementById('src').value,
+      storage_path: upData.storage_path,
+      file_name: upData.file_name,
+      website: document.getElementById('website').value // honeypot — real users leave it blank
+    };
+    const subRes = await fetch(FN_BASE, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    const subData = await subRes.json();
+    if(!subRes.ok || subData.error){ throw new Error(subData.error || 'Could not submit your application.'); }
+
+    document.getElementById('applyForm').innerHTML = '<div style="text-align:center;padding:20px 0"><i class="fa-solid fa-circle-check" style="font-size:36px;color:#2e7d32;margin-bottom:12px"></i><p style="font-size:16px">'+esc(subData.message||'Thank you — your application has reached us.')+'</p></div>';
+  }catch(err){
+    msg.textContent = err.message || 'Something went wrong. Please try again.';
+    msg.style.color = '#b3261e';
+    btn.disabled = false; btn.textContent = 'Submit Application';
+  }
+});
+
+loadPosition();
+</script>
+</body>
+</html>
