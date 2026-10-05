@@ -77,8 +77,15 @@
         <select id="src">
           <option value="">Select an option</option>
           <option>LinkedIn</option><option>Naukri</option><option>Indeed</option>
-          <option>Internshala</option><option>Other</option>
+          <option>Internshala</option>
+          <option value="__other">Other</option>
         </select>
+        <!-- "Other" on its own tells HR nothing. Picking it opens a box, and whatever is typed
+             there is what gets stored, so it shows up by name in the Interviews Source list
+             instead of as one more anonymous "Other". -->
+        <input type="text" id="srcOther" placeholder="Please tell us where"
+               maxlength="60" autocomplete="off"
+               style="display:none;margin-top:8px">
       </div>
       <div class="field"><label for="cv">Resume (PDF, DOC, DOCX, RTF or ODT, max 8MB) *</label><input type="file" id="cv" accept=".pdf,.doc,.docx,.rtf,.odt" required></div>
       <input type="text" id="website" name="website" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
@@ -155,6 +162,18 @@ async function loadPosition(){
   document.getElementById('applySection').style.display='';
 }
 
+/* Wired here, at the top level of the script, rather than inside loadPosition() - that function
+   returns early when a slug is missing or the post has closed, and anything wired after the
+   return is simply never wired. */
+function srcToggle(){
+  var sel = document.getElementById('src'), box = document.getElementById('srcOther');
+  if(!sel || !box) return;
+  var other = sel.value === '__other';
+  box.style.display = other ? 'block' : 'none';   // 'block', not '' - '' hands it back to the stylesheet
+  if(!other) box.value = '';
+}
+if(document.getElementById('src')) document.getElementById('src').addEventListener('change', srcToggle);
+
 document.getElementById('applyForm').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('applyBtn');
@@ -164,6 +183,14 @@ document.getElementById('applyForm').addEventListener('submit', async function(e
   const cvInput = document.getElementById('cv');
   const file = cvInput.files[0];
   if(!file){ msg.textContent='Please attach your resume.'; msg.style.color='#b3261e'; return; }
+
+  // Picking "Other" and leaving the box empty would store the literal "__other", so it is asked for.
+  var srcSel = document.getElementById('src'), srcBox = document.getElementById('srcOther');
+  var source = srcSel.value;
+  if(source === '__other'){
+    source = (srcBox.value || '').trim().replace(/\s+/g, ' ');
+    if(!source){ msg.textContent='Please tell us where you heard about this opening.'; msg.style.color='#b3261e'; srcBox.focus(); return; }
+  }
 
   btn.disabled = true; btn.textContent = 'Uploading resume…';
   try{
@@ -181,7 +208,7 @@ document.getElementById('applyForm').addEventListener('submit', async function(e
       last_name: document.getElementById('ln').value.trim(),
       email: document.getElementById('em').value.trim(),
       phone: document.getElementById('ph').value.trim(),
-      source: document.getElementById('src').value,
+      source: source,
       storage_path: upData.storage_path,
       file_name: upData.file_name,
       website: document.getElementById('website').value // honeypot — real users leave it blank

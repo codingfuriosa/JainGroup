@@ -1,0 +1,41 @@
+# ---- Keep these OFF the public GitHub repo ----
+
+# Backend code & secrets (hold your publish password / Sheet ID)
+google-apps-script.gs
+seed-posts.gs
+google-sheet-blog-guide.md
+
+# Private publishing tool — keep it on your own PC
+blog-editor.html
+
+# Local-only helper scripts (not needed on the live site)
+Start Website.bat
+Download Images.bat
+localize-images.ps1
+
+# Unused source / originals
+Jain Group.png
+_favpreview.png
+favicon.svg
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Added 05-10-2026: these must NEVER reach a public repo ----
+# erp-bot holds erp-credentials.json; social-scraper holds token.json and a
+# 53MB signed-in browser profile with cookie files. Both are live logins.
+erp-bot/
+social-scraper/
+meta-mcp-watcher/
+market-valuation-watcher/
+
+# Catch-alls, in case any of the above is ever moved or renamed
+*credential*
+*token*
+*secret*
+.env
+.env.*
+*cookies*
+node_modules/
