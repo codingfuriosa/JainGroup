@@ -74,6 +74,10 @@
         <div class="field"><label for="ph">Phone *</label><input type="tel" id="ph" required></div>
       </div>
       <div class="field"><label for="src">How did you hear about this opening?</label>
+        <!-- These four are only what shows before the real list arrives. HR keeps the list in
+             JAIN-E and it comes back with the position, so a channel they add there appears here
+             the next time this page is opened. Hard-coding it is how the site spent weeks
+             offering four names while HR had seven. -->
         <select id="src">
           <option value="">Select an option</option>
           <option>LinkedIn</option><option>Naukri</option><option>Indeed</option>
@@ -130,6 +134,8 @@ async function loadPosition(){
     if(!r.ok || data.error || !data.position) { showGone(); return; }
   }catch(_){ showGone(); return; }
 
+  fillSources(data.sources);
+
   const p = data.position;
   document.getElementById('posTitle').textContent = p.job_title || 'Open Position';
   document.getElementById('posCrumb').textContent = p.job_title || '';
@@ -160,6 +166,26 @@ async function loadPosition(){
 
   document.getElementById('jdSection').style.display='';
   document.getElementById('applySection').style.display='';
+}
+
+/* HR's list, with "Other" put back on the end afterwards. "Other" is not one of HR's sources and
+   is not stored as one - it is only the way to say "none of these", and what gets typed into the
+   box it opens is what is recorded. */
+function fillSources(list){
+  var sel = document.getElementById('src');
+  if(!sel || !Array.isArray(list) || !list.length) return;   // keep the built-in four if the list did not arrive
+  var keep = sel.value;
+  sel.innerHTML = '<option value="">Select an option</option>';
+  list.forEach(function(name){
+    var o = document.createElement('option');
+    o.textContent = name; o.value = name;
+    sel.appendChild(o);
+  });
+  var other = document.createElement('option');
+  other.value = '__other'; other.textContent = 'Other';
+  sel.appendChild(other);
+  if(keep) sel.value = keep;
+  srcToggle();
 }
 
 /* Wired here, at the top level of the script, rather than inside loadPosition() - that function
