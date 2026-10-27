@@ -73,12 +73,12 @@
         <div class="field"><label for="em">Email *</label><input type="email" id="em" required></div>
         <div class="field"><label for="ph">Phone *</label><input type="tel" id="ph" required></div>
       </div>
-      <div class="field"><label for="src">How did you hear about this opening?</label>
+      <div class="field"><label for="src">How did you hear about this opening? *</label>
         <!-- These four are only what shows before the real list arrives. HR keeps the list in
              JAIN-E and it comes back with the position, so a channel they add there appears here
              the next time this page is opened. Hard-coding it is how the site spent weeks
              offering four names while HR had seven. -->
-        <select id="src">
+        <select id="src" required>
           <option value="">Select an option</option>
           <option>LinkedIn</option><option>Naukri</option><option>Indeed</option>
           <option>Internshala</option>
@@ -213,6 +213,8 @@ document.getElementById('applyForm').addEventListener('submit', async function(e
   // Picking "Other" and leaving the box empty would store the literal "__other", so it is asked for.
   var srcSel = document.getElementById('src'), srcBox = document.getElementById('srcOther');
   var source = srcSel.value;
+  // Every field is required (27 Oct 2026), this one included - HR reads it to see which channel works.
+  if(!source){ msg.textContent='Please tell us how you heard about this opening.'; msg.style.color='#b3261e'; srcSel.focus(); return; }
   if(source === '__other'){
     source = (srcBox.value || '').trim().replace(/\s+/g, ' ');
     if(!source){ msg.textContent='Please tell us where you heard about this opening.'; msg.style.color='#b3261e'; srcBox.focus(); return; }
